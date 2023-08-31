@@ -1,7 +1,6 @@
 const db = require('../config')
 const {hash,compare,hashSync} = require('bcrypt')
-const {tokenCreate} = require('../middleware/AuthonticateUser')
-// const bodyParser = require('body-parser')
+const {tokenCreate} = require('../middleware/AuthenticateUser')
 
 class Users{
     getUsers(req,res){
@@ -35,8 +34,8 @@ class Users{
     }
     updateUser(req,res){
         const dt = req.body
-        if(dt.userPass){
-            dt.userPass =hashSync(dt.userPass,15)
+        if(dt.userPwd){
+            dt.userPwd =hashSync(dt.userPwd,15)
         }
         const query = `
         UPDATE Users
@@ -66,11 +65,11 @@ class Users{
     }
     async registerUser(req,res){
         const dt = req.body
-        dt.userPass = hash(dt.userPass,15)
+        dt.userPwd = hash(dt.userPwd,15)
 
         const payload ={
             emailAdd: dt.emailAdd,
-            userPass: dt.userPass
+            userPwd: dt.userPwd
         }
         const query = `
         INSERT INTO Users

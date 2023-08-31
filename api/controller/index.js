@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const {verifyToken} = require('../middleware/AuthonticateUser')
+const {verifyToken} = require('../middleware/AuthenticateUser')
 const routes = express.Router()
 //import all model's objects
 const {users,products,carts} = require('../model')
@@ -43,21 +43,21 @@ routes.post('/addProduct',bodyParser.json(),(req,res)=>{
     products.addProduct(req,res)
 })
 
-//====Routes for products=====
+//====Routes for carts=====
 routes.get('/user/:id/carts',(req,res)=>{
-    products.getProducts(req,res)
+    carts.getCart(req,res)
 })
 routes.patch('/user/:id/cart/:id',bodyParser.json(),(req,res)=>{
-    products.updateProduct(req,res)
+    carts.cartUpdate(req,res)
 })
 routes.delete('/user/:id/cart',(req,res)=>{
-    products.deleteProduct(req,res)
+    carts.deleteCart(req,res)
 })
 routes.delete('/user/:id/cart/:id',(req,res)=>{
-    products.deleteProduct(req,res)
+    carts.deleteCartItem(req,res)
 })
 routes.post('/user/:id/cart',bodyParser.json(),(req,res)=>{
-    products.addProduct(req,res)
+    carts.addToCart(req,res)
 })
 
 module.exports ={

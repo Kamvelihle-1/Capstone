@@ -22,6 +22,7 @@
             <td class="fs-1">/ or /home</td>
             <td class="fs-1">Home page</td>
         </tr>
+        <!-- Users -->
         <tr>
             <td class="fs-1">GET</td>
             <td class="fs-1">/users</td>
@@ -52,6 +53,7 @@
             <td class="fs-1">/user/:id</td>
             <td class="fs-1">Delete a user</td>
         </tr>
+        <!-- Products -->
         <tr>
             <td class="fs-1">GET</td>
             <td class="fs-1">/products</td>
@@ -76,6 +78,32 @@
             <td class="fs-1">DELETE</td>
             <td class="fs-1">/product/:id</td>
             <td class="fs-1">Delete a product</td>
+        </tr>
+        <!-- Carts -->
+        <tr>
+            <td class="fs-1">GET</td>
+            <td class="fs-1">/user/:id/carts</td>
+            <td class="fs-1">List of all products in the user's cart</td>
+        </tr>
+        <tr>
+            <td class="fs-1">POST</td>
+            <td class="fs-1">/user/:id/cart</td>
+            <td class="fs-1">Add a product to the user's cart</td>
+        </tr>
+        <tr>
+            <td class="fs-1">PATCH</td>
+            <td class="fs-1">/user/:id/cart/:id</td>
+            <td class="fs-1">Update product quantity on the user's cart</td>
+        </tr>
+        <tr>
+            <td class="fs-1">DELETE</td>
+            <td class="fs-1">/user/:id/cart</td>
+            <td class="fs-1">Delete a users's cart</td>
+        </tr>
+        <tr>
+            <td class="fs-1">DELETE</td>
+            <td class="fs-1">/user/:id/cart/:id</td>
+            <td class="fs-1">Delete a product/item in the user's cart</td>
         </tr>
 
     </table>
