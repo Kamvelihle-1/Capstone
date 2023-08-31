@@ -27,7 +27,7 @@ class Cart{
             if(err) throw err
             res.json({
                 status:res.statusCode,
-                msg:"Pruduct successfully updated"
+                msg:"Cart successfully updated"
             })
         })
     }
@@ -40,7 +40,7 @@ class Cart{
             if(err) throw err
             res.json({
                 status:res.statusCode,
-                msg:"Product added successfully"
+                msg:"Product added successfully to cart"
             })
         })
     }
@@ -53,7 +53,7 @@ class Cart{
             if(err) throw err
             res.json({
                 status:res.statusCode,
-                msg:"This product has been deleted"
+                msg:"This product has been deleted from the cart"
             })
         })
     }
@@ -66,7 +66,7 @@ class Cart{
             if(err) throw err
             res.json({
                 status:res.statusCode,
-                msg:"This product has been deleted"
+                msg:"Your cart has been deleted"
             })
         })
     }
