@@ -50,7 +50,7 @@ const routes = [
   {
     path: '/singleview',
     name: 'singleview',
-    component: () => import('../views/')
+    component: () => import('../views/SingleView.vue')
   }
 ]
 
