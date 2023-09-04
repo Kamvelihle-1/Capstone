@@ -1,4 +1,3 @@
-<!-- Sign up -->
 <template>
     <div>
 

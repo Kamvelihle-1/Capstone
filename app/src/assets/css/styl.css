@@ -6,6 +6,13 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #f3f2e9;
+    background-color: #edede9;
     color: #f1d7b7;
 }
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    /* color: #2c3e50;  */
+  }

@@ -1,11 +1,11 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg " style=" background-color: #f1d7b7;">
+        <nav class="navbar navbar-expand-lg sticky-top" style=" background-color: #f1d7b7;">
             <div class="container-fluid">
-              <a class="navbar-brand" to="/">
+              <router-link class="navbar-brand" to="/">
                 <img src="https://i.ibb.co/VMyLhXx/Your-Source-for-Smart-Home-Wizardry.png"  alt="logo" width="35" height="25" class="d-inline-block align-text-top">
                 GeniousHomes.com
-              </a>
+              </router-link>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -18,7 +18,7 @@
                     <router-link class="nav-link" to="/products">Products</router-link>
                   </li>
                   <li class="nav-item">
-                    <router-link class="nav-link" to="/about">about</router-link>
+                    <router-link class="nav-link" to="/about">About</router-link>
                   </li>
                   <li class="nav-item">
                     <router-link class="nav-link" to="/contact">Contact</router-link>

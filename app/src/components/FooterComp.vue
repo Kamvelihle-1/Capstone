@@ -46,7 +46,7 @@
 .list-inline-item:hover{
     transform: translateY(0.5rem);
     transition: top 0.5s, opacity 0.5s ;
-    
+    color: #0e255a;
 }
 
 </style>
