@@ -1,9 +1,10 @@
 <template>
   <div class="home">
     <div class="container-fluid landing p-0">
-      <div class="row">
-        <div class="col-8">
-
+      <div class="row mt-4">
+        <div class="col-8 justify-content-center mt-5">
+            <h2 class="display-2">GeniusHouse</h2>
+            <h5 class="display-6">Your Source for Smart Home Wizardry</h5>
         </div>
         <div class="col-4 ">
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">

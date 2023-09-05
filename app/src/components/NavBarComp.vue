@@ -9,8 +9,8 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse me-0 ms-5" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-5 me-0 mb-2 mb-lg-0 ">
+              <div class="collapse navbar-collapse  ms-5" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-5  mb-2 mb-lg-0 ">
                   <li class="nav-item h">
                     <router-link class="nav-link " to="/">Home</router-link>
                   </li>
@@ -54,8 +54,11 @@
 .nav-link,.navbar-brand{
   color:#0e255a;
 }
-.h{
-  margin-left: 15rem;
+@media screen and (width>1000px){
+  .h{
+    margin-left: 15rem;
+  }
 }
+
 
 </style>

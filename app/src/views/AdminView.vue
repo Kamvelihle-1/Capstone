@@ -1,4 +1,3 @@
-<!-- Admin Page -->
 <template>
     <div>
 
