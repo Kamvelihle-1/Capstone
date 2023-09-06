@@ -13,7 +13,7 @@
           <img :src="product.prodUrl" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ product.prodName}}</h5>
-            <router-link to="/singlview" class="btn btn-primary">Show more</router-link>
+            <router-link :to="{name:'singleview', params: {id: product.prodID}}" class="btn btn-primary">Show more</router-link>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
           <img :src="product.prodUrl" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ product.prodName}}</h5>
-            <router-link to="/singlview" class="btn btn-primary">Show more</router-link>
+            <router-link :to="{ name:'singleview', params: {id: product.prodID}}" class="btn btn-primary">Show more</router-link>
           </div>
         </div>
       </div>
@@ -37,6 +37,7 @@
 import SpinnerComp from '@/components/SpinnerComp.vue';
 import FilterComp from '@/components/FilterComp.vue';
 import SortComp from '@/components/SortComp.vue';
+
     export default {
       data(){
         return{
@@ -46,7 +47,8 @@ import SortComp from '@/components/SortComp.vue';
       components:{
           SpinnerComp,
           FilterComp,
-          SortComp
+          SortComp,
+          
       },
       computed:{
           products(){

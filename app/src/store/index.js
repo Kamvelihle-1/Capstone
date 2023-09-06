@@ -142,7 +142,7 @@ export default createStore({
     }, 
     async addUser(context,payload){
       try {
-        let {data} =await axios.post(`${cUrl}user/register`,payload)
+        let {data} =await axios.post(`${cUrl}register`,payload)
         const {msg} = await data
         if(msg){
           context.dispatch("getUsers")
