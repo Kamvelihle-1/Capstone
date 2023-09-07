@@ -13,7 +13,7 @@ routes.get('/user/:id',(req,res)=>{
     users.getUser(req,res)
 })
 routes.post('/register',bodyParser.json(),(req,res)=>{
-    users.register(req,res)
+    users.registerUser(req,res)
 })
 routes.patch('/user/:id',bodyParser.json(),(req,res)=>{
     users.updateUser(req,res)
@@ -34,7 +34,7 @@ routes.get('/product/:id',(req,res)=>{
     products.getProduct(req,res)
 })
 routes.patch('/product/:id',bodyParser.json(),(req,res)=>{
-    products.updateProduct(req,res)
+    products.productUpdate(req,res)
 })
 routes.delete('/product/:id',(req,res)=>{
     products.deleteProduct(req,res)
