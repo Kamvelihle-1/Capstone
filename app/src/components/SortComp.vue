@@ -70,7 +70,7 @@ button{
     font-family: 'REM', sans-serif;
 }
 button:hover{
-  background: rgb(200,160,4);
+  background: #f1d7b7;
   padding: 1rem;
   color:#2c3e50
 }

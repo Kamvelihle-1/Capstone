@@ -1,5 +1,5 @@
 <template>
-    
+    <div class="container-fluid">
     <div class="body" v-if="products">
               <div class="container justify-content-center">
                 <SearchComp @apply-search="newdataDisplay"></SearchComp>
@@ -69,7 +69,8 @@
                 </div>
                 </div>
               </div>
-              <div class="modal fade" id="UpdateProd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          
+          <div class="modal fade" id="UpdateProd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -88,11 +89,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="price" class="col-form-label">Price:</label>
-                      <input type="text"  v-model="data.amount" class="form-control" id="price"  placeholder="Price" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="type" class="col-form-label">Shoe type:</label>
-                      <input type="text"  v-model="data.prodType" class="form-control" id="type"  placeholder="Shoe type" required>
+                      <input type="number"  v-model="data.Price" class="form-control" id="price"  placeholder="Price" required>
                     </div>
                     <div class="mb-3">
                       <label for="brand" class="col-form-label">Brand:</label>
@@ -100,7 +97,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="quantity" class="col-form-label">Quantity:</label>
-                      <input type="text"  v-model="data.quantity" class="form-control" id="quantity"  placeholder="Quantity" required>
+                      <input type="number"  v-model="data.Quantity" class="form-control" id="quantity"  placeholder="Quantity" required>
                     </div>
                     <div class="mb-3">
                       <label for="desc" class="col-form-label">Description:</label>
@@ -119,28 +116,35 @@
               </div>
             </div>
           </div>
+        
             </div>
+            <div v-else>
+              <SpinnerComp/>
+            </div>
+          </div>
     </template>
     <script>
     import SearchComp from '@/components/SearchComp.vue';
     import AddProductComp from './AddProductComp.vue';
+    import SpinnerComp from './SpinnerComp.vue';
     const axios = require('axios');
       export default {
-        // props: ["product"],
+       
         components:{
           AddProductComp,
-          SearchComp
+          SearchComp,
+          SpinnerComp
         },
         data(){
                 return{
+                  payload:{},
                   outputData:[],
+                  prodID:null,
                   data:{
-                    prodID:"",
                     prodName:"",
-                    quantity:null,
-                    amount:null,
+                    Quantity:null,
+                    Price:null,
                     Category:"",
-                    prodType:"",
                     Brand:"",
                     prodDesc:"",
                     prodUrl:""
@@ -152,26 +156,42 @@
         computed: {
         products() {
           return this.$store.state.products
-        }
+        },
+        preFilledItem() {
+          return this.products.find(product => product.prodID == this.prodID) || {};
+         }
         },
         mounted() {
         this.$store.dispatch("getProducts")
         },
+        watch: {
+          prodID() {
+            this.data.Brand = this.preFilledItem.Brand
+            this.data.Category = this.preFilledItem.Category
+            this.data.Price =this.preFilledItem.Price
+            this.data.Quantity = this.preFilledItem.Quantity
+            this.data.prodDesc =this.preFilledItem.prodDesc
+            this.data.prodName = this.preFilledItem.prodName
+            this.data.prodUrl = this.preFilledItem.prodUrl 
+          }
+        },
         methods: {
           newdataDisplay(data){
                this.outputData=data;
-             
             },
           setId(x){
-              this.data.prodID =x
+              this.prodID =x
             },
             updateproduct(){
-              this.$store.dispatch("updateProduct",this.data)
-              console.log(this.data.prodID)
+              this.payload.data = this.data
+              this.payload.prodID =this.prodID
+              console.log(this.payload);
+              this.$store.dispatch("updateProduct",this.payload)
+             
             },
             deleteProduct(x){
               this.$store.dispatch("deleteProduct",x)
-            }  
+            } 
           },  
       };
     </script>
@@ -185,7 +205,7 @@
         font-family: 'REM', sans-serif;
     }
     button:hover{
-      background: rgb(200,160,4);
+      background: #f1d7b7;
       color:#2c3e50
     }
     .tableImg{

@@ -1,4 +1,5 @@
 <template>
+  <div class="containter-fluid">
     <div v-if="users">
       <div class="container">
         <div class="row table-container">
@@ -96,14 +97,19 @@
       </div>
       </div>
     </div>
+    <div v-else>
+      <SpinnerComp/>
+    </div>
+  </div>
   </template>
   <script>
    import AddUserComp from './AddUserComp.vue';
- 
+  import SpinnerComp from './SpinnerComp.vue';
   export default {
       // props: ["users"],
       components:{
-        AddUserComp
+        AddUserComp,
+        SpinnerComp
       },
       data(){
             return{
@@ -158,7 +164,7 @@
     font-family: 'REM', sans-serif;
 }
 button:hover{
-  background: rgb(200,160,4);
+  background: #f1d7b7;
   color:#2c3e50
 }
   .tableImg {

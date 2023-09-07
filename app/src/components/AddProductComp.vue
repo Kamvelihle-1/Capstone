@@ -84,7 +84,7 @@
     font-family: 'REM', sans-serif;
 }
 button:hover{
-  background: rgb(200,160,4);
+  background: #f1d7b7;
   color:#2c3e50
 }
   .modal-body {

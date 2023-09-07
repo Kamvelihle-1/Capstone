@@ -2,8 +2,8 @@
   <div class="home">
     <div class="container-fluid landing p-0">
       <div class="row mt-4">
-        <div class="col-8 justify-content-center mt-5">
-            <h2 class="display-2">GeniusHouse</h2>
+        <div class="col-8 justify-content-center mt-5 pt-5">
+            <h2 class="display-2 mt-5">GeniusHouse</h2>
             <h5 class="display-6">Your Source for Smart Home Wizardry</h5>
         </div>
         <div class="col-4 ">
@@ -69,8 +69,14 @@ export default {
 }
 </script>
 <style>
-
+.landing{
+  height: 36rem;
+}
+@media screen and (width > 900px){
+  
+}
 .carousel-item img{
-  height: 25rem;
+  max-height: 35rem;
+  max-width: 100%;
 }
 </style>

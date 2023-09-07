@@ -75,7 +75,6 @@
          
          methods: {
            registerUser(){
-            console.log(this.data);
              this.$store.dispatch("addUser",this.data)
            } 
          },
@@ -90,7 +89,10 @@
        border-radius: 1rem;
        font-family: 'REM', sans-serif;
    }
-   
+   button:hover{
+    background: #f1d7b7;
+    color:#2c3e50
+  }
      .modal-body {
        display: flex;
        flex-direction: column;

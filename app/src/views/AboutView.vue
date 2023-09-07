@@ -2,8 +2,8 @@
   <div class="container-fluid">
    <div class="p-2">
        <h2 class="display-5">About Us</h2>
-       <p class="fs-4">SHOE GAME was founded in 2023 and our main focus is to empower fashion in completing your whole look and that is by making sure our customers purchase quality shoes that would last longer at an affordable price. </p>
-       <p class="fs-4">We have partnered with major Brands such as H&M, POLO, Ewing Athletics, Adidas, Reebok, Crocs and Converse. We have been entrusted to maintain quality in our products and offer outstanding service in delivering our products to our customers. </p>
+       <p class="fs-4">GeniusHouse was founded in 2023 and our main focus is to affordable price. </p>
+       <p class="fs-4">We have partnered with major home tech applliance brands such as Ring,Arlo,Google,Siterlink. We have been entrusted to maintain quality in our products and offer outstanding service in delivering our products to our customers. </p>
    </div>
 
    <h2 class="display-6" >Meet our Management Team</h2>

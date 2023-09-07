@@ -1,4 +1,3 @@
-<!-- Checkout Page -->
 <template>
     <div>
 

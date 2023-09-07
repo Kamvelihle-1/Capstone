@@ -68,11 +68,11 @@
   button:hover{
   background:#2c3e50  ;
   padding: 1rem;
-  color:rgb(200,160,4);
+  color:#f1d7b7;
 }
   .title {
     font-size: 28px;
-    color: rgb(200,160,4);
+    color: #0e255a;;
     font-weight: 600;
     letter-spacing: -1px;
     position: relative;
@@ -120,17 +120,15 @@
     font-weight: 600;
   }
   
-  .form label .input:valid + span {
-    color:black;
-  }
+
   
   .submit {
     border: none;
     outline: none;
-    background: rgb(200,160,4);
+    background: #f1d7b7;
     padding: 10px;
     border-radius: 10px;
-    color: #fff;
+    color: #0e255a;;
     font-size: 16px;
     transform: .3s ease;
   }

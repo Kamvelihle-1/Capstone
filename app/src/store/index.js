@@ -1,7 +1,8 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from 'vue3-cookies'
-
+import router from '@/router';
+import authenticateUser from '@/services/AuthenticateUser';
 const cUrl = "https://capstone-84sf.onrender.com/"
 const{cookies}=useCookies();
 export default createStore({
@@ -80,7 +81,8 @@ export default createStore({
     },
     async updateProduct(context,payload){
       try {
-        let {data} =await axios.patch(`${cUrl}product/${payload.prodID}`,payload)
+        let {data} =await axios.patch(`${cUrl}product/${payload.prodID}`,payload.data)
+        
         if(data.msg){
           context.dispatch("getProducts")
           swal({
@@ -157,6 +159,10 @@ export default createStore({
       } catch (e) {
         context.commit("setMsg","An error occured")
       }
+    },
+    async logOut(context) {
+      context.commit('setUser')
+      cookies.remove('LegitUser'); //removes the cookie
     },
     async updateUser(context,payload){
       try {
