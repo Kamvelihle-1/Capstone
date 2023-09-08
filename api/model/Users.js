@@ -5,7 +5,7 @@ const {tokenCreate} = require('../middleware/AuthenticateUser')
 class Users{
     getUsers(req,res){
         const query =`
-        SELECT userID, CONCAT(firstName,'',lastName) 'User Fullname',Age,
+        SELECT userID, CONCAT(firstName,'',lastName) 'Fullname',Age,
         Gender,userRole,emailAdd,userImg
         FROM Users
         `
