@@ -30,11 +30,11 @@
                     </router-link>
                     <ul class="dropdown-menu">
                       <li><router-link class="dropdown-item" to="/signin">Sign In</router-link></li>
-                      <li><router-link class="dropdown-item" to="/profile">Profile</router-link></li>
+                      <li><router-link class="dropdown-item" to="/profile" v-show="isLogged">Profile</router-link></li>
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <router-link class="nav-link" to="/admin">Admin</router-link>
+                    <router-link class="nav-link" to="/admin" v-show="isAdmin">Admin</router-link>
                   </li>
                 </ul>
         
@@ -45,9 +45,27 @@
 </template>
 
 <script>
-    export default {
-        
+import { useCookies } from 'vue3-cookies';
+const {cookies} = useCookies()
+
+export default {
+   
+    computed: {
+      user() {
+        return this.$store.state.user ||
+        cookies.get("LegitUser")
+      },
+      result() {
+        return this.user?.result;
+      },
+      isAdmin() {
+        return this.result?.userRole?.toLowerCase() == "admin";
+      },
+      isLogged(){
+        return this.result?.userRole?.toLowerCase() != " ";
+      }
     }
+}
 </script>
 
 <style scoped>

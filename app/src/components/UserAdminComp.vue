@@ -27,7 +27,7 @@
               <tbody>
                 <tr v-for="user in users" :key="user.userID" class="bord">
                   <td>{{ user.userID }}</td>
-                  <td>{{ user.fullName }}</td>
+                  <td>{{ user.Fullname }}</td>
                   <td>{{ user.emailAdd }}</td>
                   <td>{{ user.Gender }}</td>
                   <td>{{ user.Age }}</td>
@@ -35,7 +35,7 @@
                   <td><img class="tableImg" :src="user.userImg" alt="" /></td>
                   <td>
                     <button type="button" class="btn btn-primary" @click="setId(user.userID)" data-bs-toggle="modal" data-bs-target="#Update" data-bs-whatever="@mdo">Update</button>
-                    <button type="button" class="btn btton" @click="deleteUser" data-bs-toggle="modal" data-bs-target="#exampleModal" id="delete-row" >
+                    <button type="button" class="btn btton" @click="deleteUser(user.userID)" data-bs-toggle="modal" data-bs-target="#exampleModal" id="delete-row" >
                       Delete
                     </button>
                   </td>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="age" class="col-form-label">Age:</label>
-                  <input type="text"  v-model="data.userAge" class="form-control" id="age"  placeholder="Age" required>
+                  <input type="text"  v-model="data.Age" class="form-control" id="age"  placeholder="Age" required>
                 </div>
                 <div class="mb-3">
                   <label for="Role" class="col-form-label">Role:</label>
@@ -80,11 +80,11 @@
                 </div>
                 <div class="mb-3">
                   <label for="password" class="col-form-label">Password:</label>
-                  <input type="password"  v-model="data.userPass" class="form-control" id="password"  placeholder="Password" required>
+                  <input type="password"  v-model="data.userPwd" class="form-control" id="password"  placeholder="Password" required>
                 </div>
                 <div class="mb-3">
                   <label for="image" class="col-form-label">Your image:</label>
-                  <input type="text"  v-model="data.userProfile" class="form-control" id="image"  placeholder="Image url" required>
+                  <input type="text"  v-model="data.userImg" class="form-control" id="image"  placeholder="Image url" required>
                 </div>
               </form>
             </div>
@@ -106,24 +106,23 @@
    import AddUserComp from './AddUserComp.vue';
   import SpinnerComp from './SpinnerComp.vue';
   export default {
-      // props: ["users"],
       components:{
         AddUserComp,
         SpinnerComp
       },
       data(){
             return{
-              
+              payload:{},
+              userID:null,
               data:{
-                userID:"",
                 firstName:"",
                 lastName:"",
-                userAge:null,
+                Age:null,
                 Gender:"",
                 userRole:"",
                 emailAdd:"",
-                userPass:"",
-                userProfile:""
+                userPwd:"",
+                userImg:""
               }
               
             }
@@ -134,20 +133,37 @@
       computed: {
           users() {
               return this.$store.state.users
-          }
+          },
+        preFilledItem() {
+          return this.users.find(user => user.userID == this.userID) || {};
+         }
       },
       mounted() {
           this.$store.dispatch("getUsers")
       },
+      watch: {
+          userID() {
+            this.data.firstName = this.preFilledItem.Fullname.split(" ")[0]
+            this.data.lastName = this.preFilledItem.Fullname.split(" ")[1]
+            this.data.Age =this.preFilledItem.Age
+            this.data.Gender = this.preFilledItem.Gender
+            this.data.userRole =this.preFilledItem.userRole
+            this.data.emailAdd = this.preFilledItem.emailAdd
+            this.data.userPwd = this.preFilledItem.userPwd 
+            this.data.userImg= this.preFilledItem.userImg
+          }
+        },
       methods:{
         setId(x){
-          this.data.userID =x
+          this.userID =x
         },
         updateUser(){
+          this.payload.data = this.data
+          this.payload.userID =this.userID
           this.$store.dispatch("updateUser",this.data)
         },
-        deleteUser(){
-          this.$store.dispatch("deleteUser",this.data.userID)
+        deleteUser(X){
+          this.$store.dispatch("deleteUser",X)
         } 
       }
      

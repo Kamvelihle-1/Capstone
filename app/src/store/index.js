@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from 'vue3-cookies'
 import router from '@/router';
-import authenticateUser from '@/services/AuthenticateUser';
+import UserAuthentication from '@/services/UserAuthentication'
 const cUrl = "https://capstone-84sf.onrender.com/"
 const{cookies}=useCookies();
 export default createStore({
@@ -147,12 +147,20 @@ export default createStore({
         let {data} =await axios.post(`${cUrl}register`,payload)
         const {msg} = await data
         if(msg){
-          context.dispatch("getUsers")
           swal({
             title:"User Registration",
             text:data.msg,
             icon:"success",
             timer:2000
+          })
+          context.dispatch("getUsers")
+          router.push({name: 'signin'})
+        } else {
+          sweet({
+            title: "Error",
+            text: data.msg,
+            icon: "error",
+            timer: 2000
           })
         }
         
@@ -163,6 +171,33 @@ export default createStore({
     async logOut(context) {
       context.commit('setUser')
       cookies.remove('LegitUser'); //removes the cookie
+    },
+    async login(context, payload) {
+      try {
+        const {msg,token,result} = ( await axios.post(`${cUrl}login`, payload)).data
+          if(result) {
+            context.commit("setUser", {result,msg});
+            cookies.set("LegitUser", {token, msg, result})
+            UserAuthentication.applyToken(token)
+            sweet({
+              title: "Login",
+              text: msg,
+              icon: "success",
+              timer: 2000
+            })
+            router.push({name: 'home'})
+          }
+          else {
+            sweet({
+              title: "Error",
+              text: msg,
+              icon: "error",
+              timer: 2000
+            })
+          }
+      } catch(error) {
+        context.commit("setMsg", "An error has occurred.")
+        };
     },
     async updateUser(context,payload){
       try {

@@ -15,9 +15,9 @@
             
             </div>
             <div class="col-6 justify-content-center p-5">
-                <form class="form  fw-semibold" action="https://formspree.io/f/mvojaave" method="POST">
+                <form class="form  fw-semibold" action="https://formspree.io/f/xleynvdd" method="POST">
                     <p class="title">Leave your Details</p>
-                       <div class="flex">
+                       <div class="row">
                            <label>
                                <span>Firstname:</span>
                                <input  placeholder="" type="text" class="input">
@@ -81,12 +81,7 @@
     padding-left: 30px;
   }
   
-  .flex {
-    display: flex;
-    width: 100%;
-    gap: 6px;
-  }
-  
+
   .form label {
     position: relative;
   }

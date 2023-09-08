@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useCookies } from 'vue3-cookies';
+const {cookies} = useCookies()
 
 const routes = [
   {
@@ -46,11 +48,17 @@ const routes = [
     path: '/checkout',
     name: 'checkout',
     component: () => import('../views/CheckoutView.vue')
+
   },
   {
     path: '/product/:id',
     name: 'singleview',
-    component: () => import('../views/SingleView.vue')
+    component: () => import('../views/SingleView.vue'),
+    beforeEnter() {
+      if(!cookies.get('LegitUser')) {
+        router.push({name: 'login'})
+      }
+    }
   }
 ]
 
