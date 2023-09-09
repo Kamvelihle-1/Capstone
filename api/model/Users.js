@@ -65,8 +65,9 @@ class Users{
     }
     async registerUser(req,res){
         const dt = req.body
+        console.log(dt.userPwd)
         dt.userPwd = hash(dt.userPwd,15)
-
+        console.log(dt.userPwd)
         const payload ={
             emailAdd: dt.emailAdd,
             userPwd: dt.userPwd
