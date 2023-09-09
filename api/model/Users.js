@@ -6,7 +6,7 @@ class Users{
     getUsers(req,res){
         const query =`
         SELECT userID, CONCAT(firstName,' ',lastName) 'Fullname',Age,
-        Gender,userRole,emailAdd,userImg
+        Gender,userRole,emailAdd,userPwd,userImg
         FROM Users
         `
         db.query(query,(err,results)=>{
