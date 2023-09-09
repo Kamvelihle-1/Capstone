@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from 'vue3-cookies'
-import router from '@/router';
+import router from '@/router/index';
 import UserAuthentication from '@/services/UserAuthentication'
 const cUrl = "https://capstone-84sf.onrender.com/"
 const{cookies}=useCookies();

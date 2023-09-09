@@ -62,7 +62,7 @@ export default {
         return this.result?.userRole?.toLowerCase() == "admin";
       },
       isLogged(){
-        return this.result?.userRole?.toLowerCase() != " ";
+        return this.result?.userRole?.toLowerCase() == " ";
       }
     }
 }
