@@ -42,7 +42,12 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: () => import('../views/CartView.vue')
+    component: () => import('../views/CartView.vue'),
+    // beforeEnter() {
+    //   if(!cookies.get('LegitUser')) {
+    //     router.push({name: 'login'})
+    //   }
+    // }
   },
   {
     path: '/checkout',
@@ -53,12 +58,8 @@ const routes = [
   {
     path: '/product/:id',
     name: 'singleview',
-    component: () => import('../views/SingleView.vue'),
-    beforeEnter() {
-      if(!cookies.get('LegitUser')) {
-        router.push({name: 'login'})
-      }
-    }
+    component: () => import('../views/SingleView.vue')
+   
   }
 ]
 

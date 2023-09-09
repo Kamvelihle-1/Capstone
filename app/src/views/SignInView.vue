@@ -1,6 +1,6 @@
 <template>
-    <div class="row container-fluid justify-content-center tex-center p-5">
-        <form class="form  fw-semibold" action="https://formspree.io/f/xleynvdd" method="POST" v-if="!register">
+    <div class="row container-fluid justify-content-center tex-center p-5 signin">
+        <form class="form  fw-semibold" action="https://formspree.io/f/xleynvdd" method="POST" v-if="!register" @submit.prevent="login" >
             <p class="title">Welcome back</p>
             
                <label>
@@ -30,6 +30,7 @@ const {cookies} = useCookies()
         },
         data(){
             return{
+              
                 register:false,
                 payload:{
                     emailAdd:"",
@@ -38,8 +39,8 @@ const {cookies} = useCookies()
             }
         },
         computed:{
-            users(){
-                return this.$store.state.users
+            user(){
+                return this.$store.state.user
             }
         },
         beforeCreate() {

@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from 'vue3-cookies'
-import router from '@/router/index';
+import router from '@/router/index.js';
 import UserAuthentication from '@/services/UserAuthentication'
 const cUrl = "https://capstone-84sf.onrender.com/"
 const{cookies}=useCookies();
@@ -177,6 +177,7 @@ export default createStore({
         const {msg,token,result} = ( await axios.post(`${cUrl}login`, payload)).data
           if(result) {
             context.commit("setUser", {result,msg});
+            console.log(this.state.user);
             cookies.set("LegitUser", {token, msg, result})
             UserAuthentication.applyToken(token)
             sweet({
@@ -252,9 +253,9 @@ export default createStore({
         console.log(e); 
       } 
     },  
-    async addToCart(context,payload,id){
+    async addToCart(context,payload){
       try {
-        let {data} =await axios.post(`${cUrl}user/${id}/cart`,payload)
+        let {data} =await axios.post(`${cUrl}user/${payload.userID}/cart`,payload)
         if(data.msg){
           context.dispatch("getCart")
           swal({

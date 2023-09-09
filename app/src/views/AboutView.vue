@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid about mt-5">
    <div class="p-2">
-       <h2 class="display-5">About Us</h2>
+       <h2 class="display-5 mb-4">About Us</h2>
        <p class="fs-4">GeniusHouse was founded in 2023 and our main focus is to affordable price. </p>
        <p class="fs-4">We have partnered with major home tech applliance brands such as Ring,Arlo,Google,Siterlink. We have been entrusted to maintain quality in our products and offer outstanding service in delivering our products to our customers. </p>
    </div>

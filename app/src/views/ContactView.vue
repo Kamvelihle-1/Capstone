@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid contact">
          
         <div class="row justify-content-center my-5">
             <div class="col-6 mt-3 fs-4 fw-semibold   ">

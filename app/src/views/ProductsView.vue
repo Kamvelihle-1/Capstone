@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid products">
     <div class="row text-center ">
       <h2 class="display-2">Products</h2>
     </div>

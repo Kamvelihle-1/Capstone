@@ -1,6 +1,6 @@
 <template>
-    <div class="row container-fluid justify-content-center tex-center p-md-5">
-        <form class="form  fw-semibold p-sm-5 text-center" action="https://formspree.io/f/xleynvdd" method="POST" @submit.prevent="register">
+    <div class="row container-fluid justify-content-center tex-center p-md-5 signup">
+        <form class="form  fw-semibold p-sm-5 text-center" action="https://formspree.io/f/xleynvdd" method="POST" @submit.prevent="register" v-if="!registered">
             <p class="title px-5">Sign Up</p>
 
             <label >
@@ -41,15 +41,20 @@
                 <input class="input" v-model="payload.userImg" type="text" name="image">
             </label>
         
-            <button class="submit my-3" type="submit">Sign Up</button> 
+            <button class="submit my-3" type="submit" >Sign Up</button> 
         </form>
+        <div v-else-if="registered">
+          <SignInView/>
+        </div>
     </div>
 </template>
 
 <script>
+import SignInView from './SignInView.vue'
     export default {
         data(){
             return{
+                registered:false,
                 payload:{
                     firstName:"",
                     lastName:"",
@@ -62,10 +67,17 @@
                 }
             }
         },
+        components:{
+          SignInView
+        },
         methods:{
             register(){
+                this.reg()
                 this.$store.dispatch("addUser",this.payload)
                 this.clear()
+            },
+            reg(){
+              this.registered=true
             },
             clear(){
                 this.payload.firstName="",
