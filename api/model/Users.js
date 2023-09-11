@@ -85,7 +85,7 @@ class Users{
             })
         })
     }
-    loginUser(req,res){
+  async loginUser(req,res){
         const {emailAdd,userPwd} = req.body
         const query =`
         SELECT CONCAT(firstName,'',lastName)'User Fullname',emailAdd,userPwd
