@@ -101,8 +101,9 @@ class Users{
                     msg:"You have entered wrong email"
                 }) 
             } else {
+                try{
                 await compare(userPwd,result[0].userPwd,(compErr,compResult)=>{
-                    if(compErr) throw compErr
+                  
 
                     const token = tokenCreate({emailAdd,userPwd})
                     if (compResult) {
@@ -118,6 +119,13 @@ class Users{
                         })
                     }
                 })
+                 } catch (compErr) {
+                    console.error(compErr);
+                    res.json({
+                      status: res.statusCode,
+                      msg: "An error occurred while comparing passwords",
+                    });
+              }
             }
            
         })
