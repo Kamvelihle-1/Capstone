@@ -35,7 +35,7 @@ class Users{
     updateUser(req,res){
         const dt = req.body
         if(dt.userPwd){
-            dt.userPwd =hashSync(dt.userPwd,15)
+            dt.userPwd =hashSync(dt.userPwd,10)
         }
         const query = `
         UPDATE Users
@@ -66,7 +66,7 @@ class Users{
     async registerUser(req,res){
         const dt = req.body
       
-        dt.userPwd =await hash(dt.userPwd,15)
+        dt.userPwd =await hash(dt.userPwd,10)
         
         const payload ={
             emailAdd: dt.emailAdd,
@@ -85,17 +85,20 @@ class Users{
             })
         })
     }
+
     loginUser(req,res){
         const emailAdd = req.body.emailAdd
         const userPwd = req.body.userPwd
+
         const query =`
-        SELECT CONCAT(firstName,'',lastName)'User Fullname',emailAdd,userPwd
+        SELECT CONCAT(firstName,' ',lastName)'Fullname',emailAdd,userPwd
         FROM Users
         WHERE emailAdd = "${emailAdd}"
         `
         db.query(query,async(err,result)=>{
             try{
             if (!result?.length > 0) {
+
                 res.json({
                     status:res.statusCode,
                     msg:`You have entered wrong email  `
@@ -103,7 +106,6 @@ class Users{
             } else {
                 await compare(userPwd,result[0].userPwd,(compErr,compResult)=>{
                     if(compErr) throw compErr
-
                     const token = tokenCreate({emailAdd,userPwd})
                     if (compResult) {
                        
@@ -119,12 +121,15 @@ class Users{
                         
                         })
                     }
-                })
+                
+                 })
             }
-        } catch (err){
-            console.log(err);
-        }
+            } catch(err){
+              console.log(err)  
+            }
+       
         })
+        
     }
 
 }

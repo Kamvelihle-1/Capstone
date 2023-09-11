@@ -34,9 +34,9 @@ class Cart{
     addToCart(req,res){
         const query =`
         INSERT INTO Cart
-        SET userID= ${req.params.id}, prodID=? ,prodQuantity=?;
+        SET userID= ${req.params.id}, prodID=${req.body.prodID} ,prodQuantity=${req.body.prodQuantity};
         `
-        db.query(query,[req.body],(err)=>{
+        db.query(query,(err)=>{
             if(err) throw err
             res.json({
                 status:res.statusCode,
