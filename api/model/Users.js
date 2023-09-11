@@ -86,18 +86,19 @@ class Users{
         })
     }
     loginUser(req,res){
-        const {emailAdd,userPwd} = req.body
+        const emailAdd = req.body.emailAdd
+        const userPwd = req.body.userPwd
         const query =`
         SELECT CONCAT(firstName,'',lastName)'User Fullname',emailAdd,userPwd
         FROM Users
-        WHERE emailAdd = ${emailAdd}
+        WHERE emailAdd = "${emailAdd}"
         `
         db.query(query,async(err,result)=>{
-            if(err) throw err
-            if (!result?.length) {
+            try{
+            if (!result?.length > 0) {
                 res.json({
                     status:res.statusCode,
-                    msg:"You have entered wrong email"
+                    msg:`You have entered wrong email  `
                 }) 
             } else {
                 await compare(userPwd,result[0].userPwd,(compErr,compResult)=>{
@@ -105,6 +106,7 @@ class Users{
 
                     const token = tokenCreate({emailAdd,userPwd})
                     if (compResult) {
+                       
                         res.json({
                             status:res.statusCode,
                             token,
@@ -113,11 +115,15 @@ class Users{
                     } else {
                         res.json({
                             status: res.statusCode,
-                            msg:"Incorrect password or would you like sign up"
+                            msg:"Incorrect  password or would you like sign up "
+                        
                         })
                     }
                 })
             }
+        } catch (err){
+            console.log(err);
+        }
         })
     }
 
