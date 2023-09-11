@@ -255,7 +255,7 @@ export default createStore({
     },  
     async addToCart(context,payload){
       try {
-        let {data} =await axios.post(`${cUrl}user/${payload.userID}/cart`,payload)
+        let {data} =await axios.post(`${cUrl}user/${payload.userID}/cart`,payload.data)
         if(data.msg){
           context.dispatch("getCart")
           swal({
@@ -270,9 +270,9 @@ export default createStore({
         context.commit("setMsg","An error occured")
       }
     },
-    async updateCart(context,payload,id){
+    async updateCart(context,payload){
       try {
-        let {data} =await axios.patch(`${cUrl}user/${payload.userID}/cart/${id}`,payload)
+        let {data} =await axios.patch(`${cUrl}user/${payload.userID}/cart/${payload.id}`,payload)
         if(data.msg){
           context.dispatch("getCart")
           swal({
@@ -303,9 +303,9 @@ export default createStore({
         context.commit("setMsg","An error occured")
       }
     }, 
-    async deleteCartItem(context,id,id2){
+    async deleteCartItem(context,ids){
       try {
-        let {data}= await axios.delete(`${cUrl}user/${id}/cart/${id2}`)
+        let {data}= await axios.delete(`${cUrl}user/${ids.id1}/cart/${ids.id2}`)
         if (data.msg) {
           context.dispatch("getCart")
           swal({
