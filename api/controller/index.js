@@ -47,7 +47,7 @@ routes.post('/product',bodyParser.json(),(req,res)=>{
 routes.get('/user/:id/carts',(req,res)=>{
     carts.getCart(req,res)
 })
-routes.patch('/user/:id/cart/:id',bodyParser.json(),(req,res)=>{
+routes.patch('/user/:id1/cart/:id2',bodyParser.json(),(req,res)=>{
     carts.cartUpdate(req,res)
 })
 routes.delete('/user/:id/cart',(req,res)=>{
