@@ -102,9 +102,8 @@ class Users{
                 }) 
             } else {
                 try{
-                await compare(userPwd,result[0].userPwd,(compErr,compResult)=>{
+                  const compResult =  await compare(userPwd,result[0].userPwd)
                   
-
                     const token = tokenCreate({emailAdd,userPwd})
                     if (compResult) {
                         res.json({
@@ -118,7 +117,7 @@ class Users{
                             msg:"Incorrect password or would you like sign up"
                         })
                     }
-                })
+                
                  } catch (compErr) {
                     console.error(compErr);
                     res.json({
