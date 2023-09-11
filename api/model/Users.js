@@ -90,7 +90,7 @@ class Users{
         const query =`
         SELECT CONCAT(firstName,' ',lastName)'Fullname',emailAdd,userPwd
         FROM Users
-        WHERE emailAdd = ${emailAdd}
+        WHERE emailAdd = ${emailAdd};
         `
         db.query(query,async(err,result)=>{
             try{
