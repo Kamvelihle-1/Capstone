@@ -35,7 +35,7 @@ class Users{
     updateUser(req,res){
         const dt = req.body
         if(dt.userPwd){
-            dt.userPwd =hashSync(dt.userPwd,15)
+            dt.userPwd =hashSync(dt.userPwd,10)
         }
         const query = `
         UPDATE Users
