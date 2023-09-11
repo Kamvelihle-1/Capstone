@@ -94,6 +94,7 @@ class Users{
         `
         db.query(query,async(err,result)=>{
             if(err) throw err
+            try{
             if (!result?.length) {
                 res.json({
                     status:res.statusCode,
@@ -118,7 +119,11 @@ class Users{
                     }
                 })
             }
+            }catch(err){
+            console.log(err)
+        }
         })
+        
     }
 
 }
