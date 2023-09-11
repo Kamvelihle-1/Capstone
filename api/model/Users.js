@@ -91,7 +91,7 @@ class Users{
         const userPwd = req.body.userPwd
 
         const query =`
-        SELECT CONCAT(firstName,' ',lastName)'Fullname',emailAdd,userPwd,userRole
+        SELECT CONCAT(firstName,' ',lastName)'Fullname',emailAdd,userPwd,userRole,userID
         FROM Users
         WHERE emailAdd = "${emailAdd}"
         `
