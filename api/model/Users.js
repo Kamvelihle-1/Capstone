@@ -88,13 +88,13 @@ class Users{
    loginUser(req,res){
         const {emailAdd,userPwd} = req.body
         const query =`
-        SELECT CONCAT(firstName,'',lastName)'User Fullname',emailAdd,userPwd
+        SELECT CONCAT(firstName,' ',lastName)'Fullname',emailAdd,userPwd
         FROM Users
         WHERE emailAdd = ${emailAdd}
         `
         db.query(query,async(err,result)=>{
             try{
-            if (!result?.length) {
+            if (!result?.length >0) {
                 res.json({
                     status:res.statusCode,
                     msg:"You have entered wrong email"
