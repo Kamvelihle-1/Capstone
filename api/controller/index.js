@@ -23,7 +23,7 @@ routes.delete('/user/:id',(req,res)=>{
 })
 routes.post('/login',
 bodyParser.json(), (req, res)=>{
-    users.login(req, res)
+    users.loginUser(req, res)
 })
 
 //====Routes for products=====
