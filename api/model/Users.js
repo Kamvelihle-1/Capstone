@@ -66,7 +66,7 @@ class Users{
     async registerUser(req,res){
         const dt = req.body
       
-        dt.userPwd =await hash(dt.userPwd,15)
+        dt.userPwd =await hash(dt.userPwd,10)
         
         const payload ={
             emailAdd: dt.emailAdd,
