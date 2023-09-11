@@ -1,5 +1,5 @@
 <template>
-    <footer class="container-fluid ">
+    <footer class="container-fluid mt-5">
         <div class="row contacts p-1 ">
             <h5 class="display-5 m-2">Contact Information</h5>
             <p class="m-2"><i class="bi bi-house-door-fill "></i> Cape Town,South Africa</p>

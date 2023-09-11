@@ -26,7 +26,7 @@ export default createStore({
       state.users = users;
     },
     setUser: (state, user) => {
-      state.users = user;
+      state.user = user;
     },
     setCart:(state,cart)=>{
       state.cart = cart;
@@ -154,9 +154,9 @@ export default createStore({
             timer:2000
           })
           context.dispatch("getUsers")
-          router.push({name: 'signin'})
+          router.push({name: 'home'})
         } else {
-          sweet({
+          swal({
             title: "Error",
             text: data.msg,
             icon: "error",
@@ -176,11 +176,10 @@ export default createStore({
       try {
         const {msg,token,result} = ( await axios.post(`${cUrl}login`, payload)).data
           if(result) {
-            context.commit("setUser", {result,msg});
-            console.log(this.state.user);
+            context.commit("setUser", result);
             cookies.set("LegitUser", {token, msg, result})
             UserAuthentication.applyToken(token)
-            sweet({
+            swal({
               title: "Login",
               text: msg,
               icon: "success",
@@ -189,7 +188,7 @@ export default createStore({
             router.push({name: 'home'})
           }
           else {
-            sweet({
+            swal({
               title: "Error",
               text: msg,
               icon: "error",
@@ -305,7 +304,7 @@ export default createStore({
     }, 
     async deleteCartItem(context,ids){
       try {
-        let {data}= await axios.delete(`${cUrl}user/${ids.id1}/cart/${ids.id2}`)
+        let {data}= await axios.delete(`${cUrl}user/${ids.userID}/cart/${ids.prodID}`)
         if (data.msg) {
           context.dispatch("getCart")
           swal({

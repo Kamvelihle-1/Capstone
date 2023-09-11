@@ -11,7 +11,7 @@
                 <span>Password:</span>
                 <input v-model="payload.userPwd" placeholder="" type="password" class="input" minlength="6">
             </label> 
-               <button class="submit my-2">Login</button>
+               <button class="submit my-2" @click="login">Login</button>
                <p><small>Create a new account: <span @click="reg">Register</span></small></p> 
        </form>
        <div v-else-if="register">
@@ -39,15 +39,16 @@ const {cookies} = useCookies()
             }
         },
         computed:{
-            user(){
-                return this.$store.state.user
+            users(){
+                return this.$store.state.users
             }
         },
         beforeCreate() {
             this.$store.dispatch('getUsers')
         },
         mounted() {
-            console.log(cookies.get('LegitUser'));
+          cookies.get('LegitUser');
+        
         },
         methods:{
             login(){

@@ -127,9 +127,6 @@
               
             }
       },
-     methods: {
-       
-      },
       computed: {
           users() {
               return this.$store.state.users

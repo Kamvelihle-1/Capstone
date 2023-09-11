@@ -29,7 +29,8 @@
                       Account
                     </router-link>
                     <ul class="dropdown-menu">
-                      <li><router-link class="dropdown-item" to="/signin">Sign In</router-link></li>
+                      <li><router-link class="dropdown-item" to="/signin" v-show="!isLogged">Sign In</router-link></li>
+                      <li><router-link class="dropdown-item" to="/" v-show="isLogged">Sign out</router-link></li>
                       <li><router-link class="dropdown-item" to="/profile" v-show="isLogged">Profile</router-link></li>
                     </ul>
                   </li>
@@ -56,14 +57,20 @@ export default {
         cookies.get("LegitUser")
       },
       result() {
-        return this.user?.result;
+        return this.user?.result[0];
       },
       isAdmin() {
+        console.log(cookies.get("LegitUser").result[0]);
         return this.result?.userRole?.toLowerCase() == "admin";
       },
       isLogged(){
-        return this.result?.userRole?.toLowerCase() == " ";
+        return this.result?.length>0;
       }
+    },
+    methods:{
+      logOut() {
+              this.$store.dispatch('logOut')
+            }
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="row container-fluid justify-content-center tex-center p-md-5 signup">
-        <form class="form  fw-semibold p-sm-5 text-center" action="https://formspree.io/f/xleynvdd" method="POST" @submit.prevent="register" v-if="!registered">
+        <form class="form  fw-semibold p-sm-5 text-center" action="https://formspree.io/f/xleynvdd" method="POST" @submit.prevent="register" >
             <p class="title px-5">Sign Up</p>
 
             <label >
@@ -43,9 +43,7 @@
         
             <button class="submit my-3" type="submit" >Sign Up</button> 
         </form>
-        <div v-else-if="registered">
-          <SignInView/>
-        </div>
+        
     </div>
 </template>
 

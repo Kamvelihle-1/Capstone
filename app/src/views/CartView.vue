@@ -1,39 +1,94 @@
 <template>
-    <div class="cart">
-        <div class="row text-center">
-            <h2 class="display-2">CART</h2>
+  <div class="container cart ">
+      <div class="row mt-4">
+        <div class="col-10">
+          <h2 class="display-2">Cart</h2>
         </div>
-        <div class="row my-3">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">{{}}</h5>
-                      <p class="card-text">{{ }}</p>
-                      <p class="card-text"><small class="text-body-secondary">{{}}</small></p>
+        <div class="col-2 pt-3">
+          <button @click="deleteCart">Clear Cart</button>
+        </div>
+          
+      </div>
+      <div class="row">
+          <div class="card mb-3" v-for="item in cart" :key="item.id" style="max-width: 540px;"  >
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img :src="item.prodUrl" class="img-fluid rounded-start" alt="">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title">{{ item.prodName}}</h5>
+                        <p class="card-text">Quantity: {{ item.prodQuantity }}</p>
+                        <p class="card-text text-end" id="price" v-bind="amount">Price:R {{ item.Price * item.prodQuantity  }}</p>
                     </div>
+                    <div class="col mt-5 pt-3">
+                        <button @click="DeleteItem(item.prodID)">Remove from cart</button>
+                    </div>
+                    </div>
+                      
                   </div>
                 </div>
               </div>
-        </div>
-        <div class="row my-3 justify-content-end">
-           <p>Subtotal: {{  }}</p> 
-        </div>
-        <div class="row ">
-            <div class="col justify-content-center">
-                <button>Checkout</button>
             </div>
-        </div>
-    </div>
+      </div>
+      <div class="row justify-content-end" >
+        <label >Total amount: {{ tAmount}}</label>
+      </div>
+      <div class="row justify-content-center">
+        <router-link class="btn" to="/checkout">Go to checkout</router-link>  
+      </div>
+
+  </div>
 </template>
 
 <script>
-    export default {
-        
-    }
+  export default {
+      data(){
+          return{
+              tAmount:0,
+              ids:{}
+          }
+      },
+      computed:{
+          cart(){
+             return this.$store.state.cart
+          },
+          user() {
+            return this.$store.state.user ||
+            cookies.get("LegitUser")
+          },
+          userId(){
+            return this.user?.result[0].userID
+          }
+      },
+      mounted(){
+          this.$store.dispatch('getCart',1)
+          this.setTotalAmount()
+      },
+      watch:{
+        nCart(){
+          console.log(this.uCart);
+        }
+      },
+      methods:{
+          setTotalAmount(){
+            const pValues = document.querySelectorAll('#price')
+            pValues.forEach((pval)=>{
+              this.tAmount += parseFloat(pval.textContent.split(' ')[1])
+            })
+            console.log(pValues);
+          },
+          DeleteItem(x){
+            this.ids.prodID =x
+            this.ids.userID= this.userId
+            this.$store.dispatch("deleteCartItem",ids)
+          }
+
+      }
+      
+  }
 </script>
 
 <style scoped>

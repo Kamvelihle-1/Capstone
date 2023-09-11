@@ -5,8 +5,12 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
+body {
+  margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes at least the viewport height */
 }
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -16,6 +20,6 @@ body{
     height: 100%;
     color:#2c3e50 ;
 }
-.about,.admin,.home,.cart,.checkout,.contact,.products,.signin,.signup,#single{
+/* .about,.admin,.home,.cart,.checkout,.contact,.products,.signin,.signup,#single{
   height: 100vh;
-}
+} */
