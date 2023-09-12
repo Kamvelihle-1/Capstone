@@ -136,7 +136,7 @@ export default createStore({
     async getUser(context, id ) {
       try{  
         const {data} = await  axios.get(`${cUrl}user/`+ id)
-        context.commit("setUs er", data.results[0])
+        context.commit("setUser", data.results[0])
       }catch(e){  
         context.commit("setMsg", "An error occured")
         console.log(e); 
@@ -170,14 +170,15 @@ export default createStore({
     },
     async logOut(context) {
       context.commit('setUser')
-      cookies.remove('LegitUser'); //removes the cookie
+      cookies.remove('CurrentUser'); 
+      router.push({name: 'home'})
     },
     async login(context, payload) {
       try {
         const {msg,token,result} = ( await axios.post(`${cUrl}login`, payload)).data
           if(result) {
             context.commit("setUser", result);
-            cookies.set("LegitUser", {token, msg, result})
+            cookies.set("CurrentUser", {token, msg, result})
             UserAuthentication.applyToken(token)
             swal({
               title: "Login",

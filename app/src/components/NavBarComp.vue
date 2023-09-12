@@ -54,17 +54,20 @@ export default {
     computed: {
       user() {
         return this.$store.state.user ||
-        cookies.get("LegitUser")
+        cookies.get("CurrentUser")
       },
       result() {
-        return this.user?.result[0];
+        if (this.user?.result?.length) {
+          return this.user?.result;
+        } else {
+          return  cookies.get("CurrentUser")?.result[0]
+        }
       },
       isAdmin() {
-        console.log(cookies.get("LegitUser").result[0]);
         return this.result?.userRole?.toLowerCase() == "admin";
       },
       isLogged(){
-        return this.result?.length>0;
+        return this.result?.length;
       }
     },
     methods:{

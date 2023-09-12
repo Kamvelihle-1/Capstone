@@ -41,7 +41,7 @@
                 <input class="input" v-model="payload.userImg" type="text" name="image">
             </label>
         
-            <button class="submit my-3" type="submit" >Sign Up</button> 
+            <button class="submit my-3" type="submit">Sign Up</button> 
         </form>
         
     </div>

@@ -47,7 +47,7 @@ const {cookies} = useCookies()
             this.$store.dispatch('getUsers')
         },
         mounted() {
-          cookies.get('LegitUser');
+          cookies.get('CurrentUser');
         
         },
         methods:{

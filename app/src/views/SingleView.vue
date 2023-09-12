@@ -1,5 +1,10 @@
 <template>
-    <div class="container-fluid p-2" v-if="product"  :key="product.prodID" id="single">
+    <div class="container-fluid p-2 mt-3" v-if="product"  :key="product.prodID" id="single">
+      <div class="row text-start align-content-start">
+        <div class="col">
+          <router-link to="/products" class="btn"><i class="fa-solid fa-arrow-left fa-beat fs-5"> Back</i></router-link>
+        </div>
+       </div>
         <div class="row justify-content-center align-content-center m-0">
             <div class="col-md-6 animate__animated animate__zoomInLeft">
                 <div class="smaller ">
@@ -23,12 +28,12 @@
                     <p class="fs-3" v-text="qCount" ></p>
                   </div>
                   <div class="col-2 pt-2">
-                    <button class="" @click="incQ"><i class="fa-solid fa-plus"></i></button>
+                    <button class="" @click="incQ(product.Quantity)"><i class="fa-solid fa-plus"></i></button>
                   </div>
                   
                 </div>
                 <div class="price">
-                  <p class="fw-bold">Price: R {{ product.Price }}</p><br>
+                  <p class="fw-bold">Price: R {{ product.Price * qCount}}</p><br>
                   <button class="mb-3 btn fw-bold" @click="addToCart"><i class="fa-solid fa-bookmark"> Add To Cart</i></button>
                 </div>
               </div>
@@ -46,45 +51,64 @@ export default {
     product() {
       return this.$store.state.product; 
     },
-    id() {
-      return this.$route.params.id
-    },
     user() {
         return this.$store.state.user ||
-        cookies.get("LegitUser")
+        cookies.get("CurrentUser")
       },
     result() {
-        return this.user?.result;
+        return this.user?.result[0];
       },
    
   },
   data(){
     return{
-      userID:null,
       qCount:1,
       payload:{},
       data:{
         prodQuantity : this.qCount,
-        prodID : this.id
+        prodID : this.$route.params.id
       }
     }
   },
   mounted() {
-    console.log(this.id);
     this.$store.dispatch("getProduct", this.$route.params.id);
   },
   methods:{
     addToCart(){
-      this.userID = this.result?.userID
-      this.payload.userID = this.userID
-      this.payload.data = this.data
-      this.$store.dispatch("addToCart",this.payload)
+      if (this.result?.length) {
+        this.payload.userID = this.result?.userID
+        this.payload.data = this.data
+        this.$store.dispatch("addToCart",this.payload)
+      } else {
+        swal({
+              title: "Add to Cart",
+              text: "Please login in order to add to cart",
+              icon: "error",
+              timer: 3000
+        })
+      }
+      
     },
-    incQ(){
-      this.qCount ++
+    incQ(x){
+      if (this.qCount<x) {
+        this.qCount ++
+        x -= this.qCount
+      }else{
+        swal({
+              title: "Add quantity",
+              text: "Not enough product in stock",
+              icon: "error",
+              timer: 3000
+        })
+      }
+      
     },
-    decQ(){
-      this.qCount -=1
+    decQ(x){
+      if (this.qCount>0) {
+        this.qCount -=1
+        x +=this.qCount
+      }
+      
     }
    
   }

@@ -44,11 +44,14 @@
 </template>
 
 <script>
+import { useCookies } from 'vue3-cookies';
+const {cookies} = useCookies()
   export default {
       data(){
           return{
               tAmount:0,
-              ids:{}
+              ids:{},
+              amount
           }
       },
       computed:{
@@ -57,14 +60,14 @@
           },
           user() {
             return this.$store.state.user ||
-            cookies.get("LegitUser")
+            cookies.get("CurrentUser")
           },
           userId(){
             return this.user?.result[0].userID
           }
       },
       mounted(){
-          this.$store.dispatch('getCart',1)
+          this.$store.dispatch('getCart',this.userId)
           this.setTotalAmount()
       },
       watch:{
