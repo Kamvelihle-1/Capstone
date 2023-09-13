@@ -1,9 +1,9 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg sticky-top" style=" background-color: #f1d7b7;">
+        <nav class="navbar navbar-expand-lg sticky-top" style=" background-color: #c0d0d5;">
             <div class="container-fluid">
               <router-link class="navbar-brand" to="/">
-                <img src="https://i.ibb.co/VMyLhXx/Your-Source-for-Smart-Home-Wizardry.png"  alt="logo" width="35" height="25" class="d-inline-block align-text-top">
+                <img src="https://i.postimg.cc/9XvnVMnV/Your-Source-for-Smart-Home-Wizardry-2-removebg-preview.png"  alt="logo" width="35" height="25" class="d-inline-block align-text-top">
                 GeniousHomes.com
               </router-link>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,12 @@
                     </router-link>
                     <ul class="dropdown-menu">
                       <li><router-link class="dropdown-item" to="/signin" v-show="!isLogged">Sign In</router-link></li>
-                      <li><router-link class="dropdown-item" to="/" v-show="isLogged">Sign out</router-link></li>
+                      <li><router-link class="dropdown-item" to="/" v-show="isLogged" @click="logOut">Sign out</router-link></li>
                       <li><router-link class="dropdown-item" to="/profile" v-show="isLogged">Profile</router-link></li>
                     </ul>
+                  </li>
+                  <li class="nav-item">
+                    <router-link class="nav-link" to="/cart" v-show="isUser">Cart</router-link>
                   </li>
                   <li class="nav-item">
                     <router-link class="nav-link" to="/admin" v-show="isAdmin">Admin</router-link>
@@ -58,22 +61,32 @@ export default {
       },
       result() {
         if (this.user?.result?.length) {
-          return this.user?.result;
+          return this.user?.result[0];
         } else {
+          console.log(cookies.get("CurrentUser")?.result[0]);
           return  cookies.get("CurrentUser")?.result[0]
         }
       },
       isAdmin() {
+        console.log(this.result?.userRole?.toLowerCase() == "admin");
         return this.result?.userRole?.toLowerCase() == "admin";
       },
+      isUser() {
+        console.log(this.result?.userRole?.toLowerCase() == "user");
+        return this.result?.userRole?.toLowerCase() == "user";
+      },
       isLogged(){
-        return this.result?.length;
+        console.log(!this.result == " ");
+        return !this.result == " ";
       }
+    },
+    mounted(){
+   
     },
     methods:{
       logOut() {
-              this.$store.dispatch('logOut')
-            }
+        this.$store.dispatch('logOut')
+      }
     }
 }
 </script>

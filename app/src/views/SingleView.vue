@@ -123,7 +123,6 @@ export default {
     }  
     .name {
         margin-top: 1rem;
-        margin-bottom: 2rem;
         border-bottom: 2px solid rgb(200, 160,4);
     }
 

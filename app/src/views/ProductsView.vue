@@ -73,10 +73,10 @@ import SortComp from '@/components/SortComp.vue';
     background-color:#f3f2e9;
 }
 .filtsort{
-  background-color: #f1d7b7;
+  background-color: #c0d0d5;
 }
 .btn{
-    background-color: #f1d7b7;
+    background-color: #c0d0d5;
     color: #0e255a;
 }
 .card img{

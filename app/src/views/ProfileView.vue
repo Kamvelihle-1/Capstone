@@ -6,17 +6,17 @@
             </div>
             <div class="row p-4">
                 <div class="col">
-                    <div class="row text-center p-3">
+                    <div class="row text-center justify-content-center p-3">
                         
-                            <div class="col-md-6 g-2">
-                                <div class="row mb-2 text-start">
+                            <div class="col-md-4 g-2 justify-content-center ">
+                                <div class="row mb-2 text-start justify-content-center align-content-center">
                                     <label for="firstName" >First Name: 
-                                        <input type="text" class="mx-5"  id="firstName" :placeholder="user.Fullname">  
+                                        <input type="text" class="mx-5"  id="firstName" :placeholder="userName">  
                                     </label>
                                 </div>
                                 <div class="row my-2 pt-2 text-start">
                                     <label for="lastName" >Last Name: 
-                                        <input type="text" class="mx-5 " id="lastName" :placeholder="user.Fullname">
+                                        <input type="text" class="mx-5 " id="lastName" :placeholder="userSurname">
                                     </label>
                                 </div>
                                 <div class="row my-2 pt-2 text-start">
@@ -30,8 +30,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <img :src="user.userProfile" :alt="user.Fullname" loading="lazy">
+                            <div class="col-md-2">
+                                <img :src="user.userImg" :alt="user.Fullname" loading="lazy">
                             </div>
                        
                     </div>
@@ -72,12 +72,34 @@ const {cookies} = useCookies()
             cookies.get("CurrentUser")
           },
           userId(){
-            return this.user?.result[0].userID
+            if (this.user?.result?.length) {
+          return this.user?.result[0].userID;
+        } else {
+          console.log(cookies.get("CurrentUser")?.result[0].Fullname);
+          return  cookies.get("CurrentUser")?.result[0].userID
+        }
+          },
+          userName(){
+            if (this.user?.result?.length) {
+          return this.user?.result[0].Fullname.split(" ")[0];
+        } else {
+          console.log(cookies.get("CurrentUser")?.result[0].Fullname);
+          return  cookies.get("CurrentUser")?.result[0].Fullname.split(" ")[0]
+        }
+          },
+          userSurname(){
+            if (this.user?.result?.length) {
+          return this.user?.result[0].Fullname.split(" ")[1];
+        } else {
+          console.log(cookies.get("CurrentUser")?.result[0].Fullname.split(" ")[1]);
+          return  cookies.get("CurrentUser")?.result[0].Fullname.split(" ")[1]
+        }
           }
         },
         mounted(){
             this.$store.dispatch("getUser",this.userId)
             console.log(this.user);
+            console.log(cookies.get("CurrentUser")?.result[0].Fullname.split(" ")[1]);
         },
         methods: {
             logOut() {

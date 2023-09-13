@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid contact">
          
-        <div class="row justify-content-center my-5">
-            <div class="col-6 mt-3 fs-4 fw-semibold   ">
+        <div class="row justify-content-center py-5">
+            <div class="col-6 mt-3 fs-4 fw-semibold " style="background-color:#c0d0d5">
                 <p class=" mt-5">Get in Touch with us!
                  <br>
                  You will be contacted soon for any additional infomation or feedback regarding our products or delivery service.
@@ -14,7 +14,7 @@
                 <p class="m-2"><i class="bi bi-telephone-inbound-fill "></i>+021 638 0658</p>
             
             </div>
-            <div class="col-6 justify-content-center p-5">
+            <div class="col-6 justify-content-center mt-3 p-5" style="background-color:#c0d0d5">
                 <form class="form  fw-semibold" action="https://formspree.io/f/xleynvdd" method="POST">
                     <p class="title">Leave your Details</p>
                        <div class="row">
@@ -66,7 +66,7 @@
    
   }
   button:hover{
-  background:#2c3e50  ;
+  background:#0e255a ;
   padding: 1rem;
   color:#f1d7b7;
 }
@@ -120,16 +120,17 @@
   .submit {
     border: none;
     outline: none;
-    background: #f1d7b7;
+    background: #c0d0d5;
     padding: 10px;
     border-radius: 10px;
-    color: #0e255a;;
+    color: #0e255a;
     font-size: 16px;
     transform: .3s ease;
   }
   
   .submit:hover {
-    background-color: black;
+    background-color: #0e255a;
+    color: #f3f2e9;
   }
   
   @keyframes pulse {

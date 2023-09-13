@@ -7,10 +7,11 @@
    </div>
 
    <h2 class="display-6" >Meet our Management Team</h2>
-   <div class="">
+   <div>
       <img src="https://i.postimg.cc/rm5t6rfb/C12-C2-Kamvelihle-Sikalana-2.jpg" class="img-thumbnail rounded-circle mt-5">
-      <p class="name mx-5 fs-5 ">Founder <br>
-          Kamvelihle Sikalana</p>
+      <p class="fs-5 ">Founder <br>
+          Kamvelihle Sikalana
+      </p>
     
    </div>
    

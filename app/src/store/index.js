@@ -171,6 +171,7 @@ export default createStore({
     async logOut(context) {
       context.commit('setUser')
       cookies.remove('CurrentUser'); 
+      console.log(cookies.get('CurrentUser'));
       router.push({name: 'home'})
     },
     async login(context, payload) {

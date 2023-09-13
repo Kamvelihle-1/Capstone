@@ -1,9 +1,13 @@
 <template>
   <div>
     <NavBarComp/>
-    <router-view/>
+    <div class="container-fluid p-0">
+      <router-view/>
+    </div>
     <FooterComp/>
   </div>
+ 
+  
  
 </template>
 <script>
@@ -19,5 +23,5 @@ import FooterComp from './components/FooterComp.vue';
 </script>
 
 <style>
-@import './assets/css/styl.css';
+@import './assets/css/style.css';
 </style>
