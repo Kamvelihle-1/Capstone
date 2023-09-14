@@ -53,7 +53,7 @@ routes.patch('/user/:id1/cart/:id2',bodyParser.json(),(req,res)=>{
 routes.delete('/user/:id/cart',(req,res)=>{
     carts.deleteCart(req,res)
 })
-routes.delete('/user/:id1/cart/:id2',(req,res)=>{
+routes.delete('/user/:id2/cart/:id1',(req,res)=>{
     carts.deleteCartItem(req,res)
 })
 routes.post('/user/:id/cart',bodyParser.json(),(req,res)=>{
