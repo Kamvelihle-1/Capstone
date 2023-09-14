@@ -15,6 +15,9 @@
     text-align: center;
     height: 100%;
     color:#2c3e50 ;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto minmax(100vh,1fr) auto;
 }
 /* .about,.admin,.home,.cart,.checkout,.contact,.products,.signin,.signup,#single{
   height: 100vh;

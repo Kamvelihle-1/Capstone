@@ -5,15 +5,15 @@
           <router-link to="/products" class="btn"><i class="fa-solid fa-arrow-left fa-beat fs-5"> Back</i></router-link>
         </div>
        </div>
-        <div class="row justify-content-center align-content-center m-0">
-            <div class="col-md-6 animate__animated animate__zoomInLeft">
+        <div class="row justify-content-center align-content-center mt-5 mx-1 pt-4 pb-4 px-3" style="background-color:#c0d0d5; border-radius:.5rem">
+            <div class="col-md-6 animate__animated animate__zoomInLeft" >
                 <div class="smaller ">
                   <img class="small" :src="product.prodUrl" />
                 </div>
             </div>
             <div class="col-md-6 card animate__animated animate__zoomInRight" >
               <div class="card-body">
-                <div class="name row">
+                <div class="pname row ">
                   <h5>{{ product.prodName }}</h5>
                 </div>
                 <div class="row description">
@@ -55,8 +55,13 @@ export default {
         return this.$store.state.user ||
         cookies.get("CurrentUser")
       },
-    result() {
-        return this.user?.result[0];
+      result() {
+        if (this.user?.result?.length) {
+          return this.user?.result[0];
+        } else {
+          console.log(cookies.get("CurrentUser")?.result[0]);
+          return  cookies.get("CurrentUser")?.result[0]
+        }
       },
    
   },
@@ -65,7 +70,7 @@ export default {
       qCount:1,
       payload:{},
       data:{
-        prodQuantity : this.qCount,
+        prodQuantity : null,
         prodID : this.$route.params.id
       }
     }
@@ -75,8 +80,10 @@ export default {
   },
   methods:{
     addToCart(){
-      if (this.result?.length) {
+      console.log(this.result !=" ");
+      if (this.result !=" ") {
         this.payload.userID = this.result?.userID
+        this.data.prodQuantity =this.qCount
         this.payload.data = this.data
         this.$store.dispatch("addToCart",this.payload)
       } else {
@@ -121,9 +128,9 @@ export default {
         max-width: 300px;
         margin-top: 15px;
     }  
-    .name {
+    .pname {
         margin-top: 1rem;
-        border-bottom: 2px solid rgb(200, 160,4);
+        border-bottom: 1px solid rgb(200, 160,4);
     }
 
 </style>

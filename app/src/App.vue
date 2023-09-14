@@ -1,14 +1,9 @@
 <template>
-  <div>
     <NavBarComp/>
     <div class="container-fluid p-0">
       <router-view/>
     </div>
     <FooterComp/>
-  </div>
- 
-  
- 
 </template>
 <script>
 import NavBarComp from './components/NavBarComp.vue';

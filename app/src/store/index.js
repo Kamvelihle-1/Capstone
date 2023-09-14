@@ -258,7 +258,7 @@ export default createStore({
       try {
         let {data} =await axios.post(`${cUrl}user/${payload.userID}/cart`,payload.data)
         if(data.msg){
-          context.dispatch("getCart")
+          context.dispatch("getCart",payload.userID)
           swal({
             title:"Adding to cart",
             text:data.msg,
@@ -275,7 +275,7 @@ export default createStore({
       try {
         let {data} =await axios.patch(`${cUrl}user/${payload.userID}/cart/${payload.id}`,payload)
         if(data.msg){
-          context.dispatch("getCart")
+          context.dispatch("getCart",payload.userID)
           swal({
             title:"Update",
             text:data.msg,
@@ -291,7 +291,7 @@ export default createStore({
       try {
         let {data}= await axios.delete(`${cUrl}user/${id}/cart`)
         if (data.msg) {
-          context.dispatch("getCart")
+          context.dispatch("getCart",id)
           swal({
             title:"Cart removal",
             text: data.msg,
@@ -306,9 +306,9 @@ export default createStore({
     }, 
     async deleteCartItem(context,ids){
       try {
-        let {data}= await axios.delete(`${cUrl}user/${ids.userID}/cart/${ids.prodID}`)
+        let {data}= await axios.delete(`${cUrl}user/${ids.userID}/cart/${ids.id}`)
         if (data.msg) {
-          context.dispatch("getCart")
+          context.dispatch("getCart",ids.userID)
           swal({
             title:"Cart item removal",
             text: data.msg,

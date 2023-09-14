@@ -13,6 +13,7 @@
           <img :src="product.prodUrl" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ product.prodName}}</h5>
+            <p>Price: R {{product.Price}}</p>
             <router-link :to="{name:'singleview', params: {id: product.prodID}}" class="btn btn-primary">Show more</router-link>
           </div>
         </div>
@@ -22,6 +23,7 @@
           <img :src="product.prodUrl" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ product.prodName}}</h5>
+            <p>Price: R {{product.Price}}</p>
             <router-link :to="{ name:'singleview', params: {id: product.prodID}}" class="btn btn-primary">Show more</router-link>
           </div>
         </div>

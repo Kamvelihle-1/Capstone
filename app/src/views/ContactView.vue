@@ -2,7 +2,7 @@
     <div class="container-fluid contact">
          
         <div class="row justify-content-center py-5">
-            <div class="col-6 mt-3 fs-4 fw-semibold " style="background-color:#c0d0d5">
+            <div class="col-6 mt-3 fs-4 fw-semibold " >
                 <p class=" mt-5">Get in Touch with us!
                  <br>
                  You will be contacted soon for any additional infomation or feedback regarding our products or delivery service.
@@ -14,7 +14,7 @@
                 <p class="m-2"><i class="bi bi-telephone-inbound-fill "></i>+021 638 0658</p>
             
             </div>
-            <div class="col-6 justify-content-center mt-3 p-5" style="background-color:#c0d0d5">
+            <div class="col-5 justify-content-center  mt-3  p-5" style="background-color:#c0d0d5; border-radius:.5rem">
                 <form class="form  fw-semibold" action="https://formspree.io/f/xleynvdd" method="POST">
                     <p class="title">Leave your Details</p>
                        <div class="row">
