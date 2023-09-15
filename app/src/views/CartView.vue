@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="row">
-          <div class="card mb-3 mx-4" v-for="item in cart" :key="item.id" style="max-width: 540px;"  >
+          <div class="card mb-3 mx-4" v-for="item in cart" :key="item.id" style="max-width: 640px;"  >
               <div class="row g-0">
                 <div class="col-md-4">
                   <img :src="item.prodUrl" class="img-fluid rounded-start" alt="">
@@ -20,14 +20,16 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col">
-                        <h5 class="card-title">{{ item.prodName}}</h5>
+                      <div class="col text-center ">
+                        <h5 class="card-title mt-5">{{ item.prodName}}</h5>
                         <p class="card-text">Quantity: {{ item.prodQuantity }}</p>
                         <p class="card-text text-end price" id="price" >Price:R {{ item.Price * item.prodQuantity  }}</p>
                     </div>
                     <div class="col  pt-3">
                         <button @click="DeleteItem(item.id)">Remove from cart</button>
-                        <button class="my-2" @click="DeleteItem(item.id)">Update cart item</button>
+                        <label class="mt-1" >Quantity update:</label>
+                        <input class="my-2 cup" type="number" v-model="payload.prodQuantity" min="1" max="10">
+                        <button class="my-2" @click="UpdateItem(item.id)">Update cart item</button>
                     </div>
                     </div>
                       
@@ -59,7 +61,9 @@ const {cookies} = useCookies()
           return{
               tAmount:0,
               ids:{},
-          
+            payload:{
+              prodQuantity:1
+            }
           }
       },
       computed:{
@@ -86,6 +90,9 @@ const {cookies} = useCookies()
       watch:{
        setTotalAmount(){
         console.log(this.tAmount);
+       },
+       tAmount(){
+        console.log(this.tAmount);
        }
       },
       methods:{
@@ -104,6 +111,11 @@ const {cookies} = useCookies()
           },
           deleteCart(){
             this.$store.dispatch("deleteCart",this.userId)
+          },
+          UpdateItem(x){
+            this.payload.userID = this.userId
+            this.payload.id = x
+            this.$store.dispatch("updateCart",this.payload)
           }
 
       }
@@ -114,6 +126,9 @@ const {cookies} = useCookies()
 <style scoped>
 .cart-panel{
   background-color: #c0d0d5;
+  border-radius: .5rem;
+}
+.cup{
   border-radius: .5rem;
 }
 button,.btn{
