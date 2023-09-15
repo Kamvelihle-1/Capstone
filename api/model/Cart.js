@@ -18,7 +18,7 @@ class Cart{
         })
     }  
     cartUpdate(req,res){
-        const query = `)
+        const query = `
         UPDATE Cart
         SET prodQuantity = ?
         WHERE id= ${req.params.id1} AND useriID = ${req.params.id2} 
