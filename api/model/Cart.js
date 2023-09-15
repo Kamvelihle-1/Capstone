@@ -21,7 +21,7 @@ class Cart{
         const query = `
         UPDATE Cart
         SET prodQuantity = ?
-        WHERE id= ${req.params.id1} AND useriID = ${req.params.id2} 
+        WHERE id= ${req.params.id1} AND userID = ${req.params.id2} 
         `
         db.query(query,[req.body],(err,results)=>{
             if(err) throw err
