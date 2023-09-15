@@ -20,10 +20,10 @@ class Cart{
     cartUpdate(req,res){
         const query = `
         UPDATE Cart
-        SET prodQuantity = ?
+        SET prodQuantity = ${req.body.prodQuantity}
         WHERE id= ${req.params.id1} AND userID = ${req.params.id2} 
         `
-        db.query(query,[req.body],(err,results)=>{
+        db.query(query,(err,results)=>{
             if(err) throw err
             res.json({
                 status:res.statusCode,
