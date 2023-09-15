@@ -3,7 +3,7 @@ const db = require('../config')
 class Cart{
     getCart(req,res){
         const query =`
-        SELECT p.prodUrl,p.prodName,p.Price,c.prodQuantity,c.id,CONCAT(u.fisrtName," ",u.lastName)'UserName'
+        SELECT p.prodUrl,p.prodName,p.Price,c.prodQuantity,c.id,CONCAT(u.firstName," ",u.lastName)'UserName'
         FROM Products p
         JOIN Cart c USING(prodID)
         JOIN Users u USING(userID)
