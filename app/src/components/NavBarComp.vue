@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg sticky-top" style=" background-color: #c0d0d5;">
             <div class="container-fluid">
               <router-link class="navbar-brand" to="/">
-                <img src="https://i.postimg.cc/9XvnVMnV/Your-Source-for-Smart-Home-Wizardry-2-removebg-preview.png"  alt="logo" width="35" height="25" class="d-inline-block align-text-top">
+                <img src="https://i.postimg.cc/9XvnVMnV/Your-Source-for-Smart-Home-Wizardry-2-removebg-preview.png"  alt="logo" width="35" height="25" class="d-inline-block align-text-top" loading="lazy">
                 GeniousHomes.com
               </router-link>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -5,7 +5,7 @@
           <h2 class="display-2 ">Cart</h2>
         </div>
       </div>
-      <div class="cart-panel" v-if="cart?.length > 0">
+      <div class="cart-panel p-2" v-if="cart?.length > 0">
       <div class="row justify-content-end px-5 mx-5">
         <div class="col-2 py-4">
           <button @click="deleteCart">Clear Cart</button>
@@ -25,8 +25,9 @@
                         <p class="card-text">Quantity: {{ item.prodQuantity }}</p>
                         <p class="card-text text-end price" id="price" >Price:R {{ item.Price * item.prodQuantity  }}</p>
                     </div>
-                    <div class="col mt-5 pt-3">
+                    <div class="col  pt-3">
                         <button @click="DeleteItem(item.id)">Remove from cart</button>
+                        <button class="my-2" @click="DeleteItem(item.id)">Update cart item</button>
                     </div>
                     </div>
                       
@@ -36,10 +37,12 @@
             </div>
       </div>
       <div class="row justify-content-end" >
-        <label >Total amount:R {{ tAmount.toFixed(2)}}</label>
+        <label class="fs-3">Total amount:R {{ tAmount.toFixed(2)}}</label>
       </div>
-      <div class="row justify-content-center">
-        <router-link class="btn" to="/checkout">Go to checkout</router-link>  
+      <div class="row justify-content-center mt-4">
+        <div class="col">
+          <router-link class="btn" to="/checkout">Go to checkout</router-link>
+        </div>  
       </div>
     </div>
     <div v-else class="container mt-5 pt-5">
@@ -81,9 +84,9 @@ const {cookies} = useCookies()
           this.setTotalAmount()
       },
       watch:{
-        tAmount(){
-          console.log(this.tAmount);
-        }
+       setTotalAmount(){
+        console.log(this.tAmount);
+       }
       },
       methods:{
           setTotalAmount(){
@@ -92,7 +95,7 @@ const {cookies} = useCookies()
               this.tAmount += parseFloat(pval.textContent.split(' ')[1])
 
             })
-            console.log(pValues);
+        
           },
           DeleteItem(x){
             this.ids.id =x
@@ -109,5 +112,19 @@ const {cookies} = useCookies()
 </script>
 
 <style scoped>
-
+.cart-panel{
+  background-color: #c0d0d5;
+  border-radius: .5rem;
+}
+button,.btn{
+  padding: .5rem;
+  background:#2c3e50;
+  color:#f3f2e9;
+  border-radius: 1rem;
+}
+button,.btn:hover{
+background: #f3f2e9;
+padding: 10px;
+color:#2c3e50
+}
 </style>

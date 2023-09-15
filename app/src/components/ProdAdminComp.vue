@@ -51,7 +51,7 @@
                         <td>R {{ product.Price }}</td>
                         <td>{{ product.Category }}</td>
                         <td>{{ product.Quantity }}</td>
-                        <td><img class="tableImg" :src="product.prodUrl" alt="" /></td>
+                        <td><img class="tableImg" :src="product.prodUrl" alt="" loading="lazy"></td>
                         <td>
                           <button type="button" class="btn " data-bs-toggle="modal" @click="setId(product.prodID)" data-bs-target="#UpdateProd" data-bs-whatever="@mdo">Update</button>
                           <button

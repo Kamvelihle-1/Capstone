@@ -56,14 +56,13 @@
       background-image: url("https://i.postimg.cc/cCPK5Mv2/Collage-Smart-Homes-2543428667.jpg");
       background-repeat: no-repeat;
       background-size: cover;
+      border-radius: .5rem;
     }
     .info{
       height: 100%;
       background-color: rgba(252, 252, 252, 0.742);
     }
-    .git{
-      border-radius: .5rem;
-    }
+   
       .form {
     display: flex;
     flex-direction: column;

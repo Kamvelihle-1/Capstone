@@ -32,7 +32,7 @@
                   <td>{{ user.Gender }}</td>
                   <td>{{ user.Age }}</td>
                   <td>{{ user.userRole }}</td>
-                  <td><img class="tableImg" :src="user.userImg" alt="" /></td>
+                  <td><img class="tableImg" :src="user.userImg" alt="" loading="lazy"></td>
                   <td>
                     <button type="button" class="btn btn-primary" @click="setId(user.userID)" data-bs-toggle="modal" data-bs-target="#Update" data-bs-whatever="@mdo">Update</button>
                     <button type="button" class="btn btton" @click="deleteUser(user.userID)" data-bs-toggle="modal" data-bs-target="#exampleModal" id="delete-row" >

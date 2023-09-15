@@ -7,7 +7,7 @@
             <div class="card mb-3" v-for="item in cart" :key="item.id" style="max-width: 540px;"  >
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img :src="item.prodUrl" class="img-fluid rounded-start" alt="">
+                    <img :src="item.prodUrl" class="img-fluid rounded-start" alt="" loading="lazy">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">

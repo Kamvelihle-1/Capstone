@@ -7,11 +7,11 @@
                <span class="slider"></span>
                <span class="card-side"></span>
                <div class="flip-card__inner pb-5">
-                  <div class="flip-card__front">
+                  <div class="flip-card__front mt-5 ">
                      <div class="title">Log in</div>
                      <form class="flip-card__form" action="https://formspree.io/f/xleynvdd" method="POST"  @submit.prevent="login">
-                        <input class="flip-card__input" v-model="payload.emailAdd" name="email" placeholder="Email" type="email">
-                        <input class="flip-card__input" v-model="payload.userPwd" name="password" placeholder="Password" type="password">
+                        <input class="flip-card__input my-1" v-model="payload.emailAdd" name="email" placeholder="Email" type="email">
+                        <input class="flip-card__input my-1" v-model="payload.userPwd" name="password" placeholder="Password" type="password">
                         <button class="flip-card__btn submit" @click="login">Let`s go!</button>
                      </form>
                   </div>

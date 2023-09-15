@@ -8,7 +8,7 @@
         <div class="row justify-content-center align-content-center mt-5 mx-1 pt-4 pb-4 px-3" style="background-color:#c0d0d5; border-radius:.5rem">
             <div class="col-md-6 animate__animated animate__zoomInLeft" >
                 <div class="smaller ">
-                  <img class="small" :src="product.prodUrl" />
+                  <img class="small" :src="product.prodUrl" loading="lazy">
                 </div>
             </div>
             <div class="col-md-6 card animate__animated animate__zoomInRight" >

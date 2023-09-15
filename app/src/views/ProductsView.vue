@@ -10,7 +10,7 @@
     <div class="row prod m-3 pt-0">
       <div class="d-flex c flex-wrap justify-content-evenly align-content-center  p-2" v-if="newData.length>0">
         <div class="card mb-3 mx-4" v-for="product of newData " :key="product.prodID" style="width: 18rem;">
-          <img :src="product.prodUrl" class="card-img-top" alt="...">
+          <img :src="product.prodUrl" class="card-img-top" alt="..." loading="lazy">
           <div class="card-body">
             <h5 class="card-title">{{ product.prodName}}</h5>
             <p>Price: R {{product.Price}}</p>
@@ -20,7 +20,7 @@
       </div>
       <div class="d-flex c flex-wrap justify-content-evenly align-content-center pt-3 p-2" v-else-if="products">
         <div class="card mb-3 mx-4" v-for="product of products " :key="product.prodID" style="width: 18rem;">
-          <img :src="product.prodUrl" class="card-img-top" alt="...">
+          <img :src="product.prodUrl" class="card-img-top" alt="..." loading="lazy">
           <div class="card-body">
             <h5 class="card-title">{{ product.prodName}}</h5>
             <p>Price: R {{product.Price}}</p>

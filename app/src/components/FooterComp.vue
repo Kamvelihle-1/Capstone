@@ -3,7 +3,7 @@
         <div class="row contacts p-1 ">
             
             <div class="col">
-                <img class="fw-4" src="https://i.postimg.cc/9XvnVMnV/Your-Source-for-Smart-Home-Wizardry-2-removebg-preview.png" alt="" style="width:15rem;">
+                <img class="fw-4" src="https://i.postimg.cc/9XvnVMnV/Your-Source-for-Smart-Home-Wizardry-2-removebg-preview.png" alt="" style="width:15rem;" loading="lazy">
             </div>
             <div class="col pt-3">
                 <h5 class="display-5 m-2">Contact Information</h5>
