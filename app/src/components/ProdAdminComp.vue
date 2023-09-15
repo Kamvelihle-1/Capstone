@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
     <div class="body" v-if="products">
-              <div class="container justify-content-center">
+              <div class="container justify-content-center mt-5">
                 <SearchComp @apply-search="newdataDisplay"></SearchComp>
               </div>
               <div class="row table-container">

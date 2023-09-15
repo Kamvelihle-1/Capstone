@@ -66,17 +66,18 @@ select,label{
 }
 select{
     width: 50%;
+    border-radius: .5rem;
 }
 button{
-    padding: 0.5rem;
+    padding: .5rem;
     background:#2c3e50;
-    color:white;
+    color:#f3f2e9;
     border-radius: 1rem;
     font-family: 'REM', sans-serif;
 }
 button:hover{
-  background: #f1d7b7;
-  padding: 1rem;
+  background: #f3f2e9;
+  padding: 10px;
   color:#2c3e50
 }
 </style>

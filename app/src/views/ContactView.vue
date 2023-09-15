@@ -2,8 +2,9 @@
     <div class="container-fluid contact">
          
         <div class="row justify-content-center py-5">
-            <div class="col-6 mt-3 fs-4 fw-semibold " >
-                <p class=" mt-5">Get in Touch with us!
+            <div class="col-6 mt-3 p-0  git fs-4 fw-semibold " >
+              <div class="info pt-5">
+                <p class=" mt-5 ">Get in Touch with us!
                  <br>
                  You will be contacted soon for any additional infomation or feedback regarding our products or delivery service.
                 </p>
@@ -12,7 +13,7 @@
                 <p class="m-2"><i class="bi bi-house-door-fill "></i> Cape Town,South Africa</p>
                 <p class="m-2"><i class="bi bi-envelope-at "></i> admin@geniushouse.com</p>
                 <p class="m-2"><i class="bi bi-telephone-inbound-fill "></i>+021 638 0658</p>
-            
+              </div>
             </div>
             <div class="col-5 justify-content-center  mt-3  p-5" style="background-color:#c0d0d5; border-radius:.5rem">
                 <form class="form  fw-semibold" action="https://formspree.io/f/xleynvdd" method="POST">
@@ -51,6 +52,18 @@
     }
     </script>
     <style scoped>
+    .git{
+      background-image: url("https://i.postimg.cc/cCPK5Mv2/Collage-Smart-Homes-2543428667.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .info{
+      height: 100%;
+      background-color: rgba(252, 252, 252, 0.742);
+    }
+    .git{
+      border-radius: .5rem;
+    }
       .form {
     display: flex;
     flex-direction: column;
@@ -63,6 +76,7 @@
     border-radius: 20px;
     border: 1px solid black ;
     position: relative;
+    margin-left: 5rem;
    
   }
   button:hover{

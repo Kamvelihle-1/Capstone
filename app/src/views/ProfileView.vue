@@ -1,10 +1,11 @@
 <template>
     <div class="profile my-3">
+        <h2 class="display-2">Your Profile</h2>
         <div v-if="user" :key="user.userID">
             <div class="row text-start">
                 <router-link to="/" class="btn"><i class="fa-solid fa-arrow-left "> Back</i></router-link>
             </div>
-            <div class="row p-4">
+            <div class="row p-4 prof m-4">
                 <div class="col">
                     <div class="row text-center justify-content-center p-3">
                         
@@ -118,5 +119,8 @@ const {cookies} = useCookies()
 </script>
 
 <style scoped>
+.prof{
+    background-color:#c0d0d5 ;
+}
 
 </style>

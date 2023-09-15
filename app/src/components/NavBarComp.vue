@@ -95,6 +95,11 @@ export default {
 .nav-link,.navbar-brand{
   color:#0e255a;
 }
+.nav-link:hover{
+  background-color: #0e255a;
+  color: #c0d0d5;
+  border-radius: .5rem;
+}
 @media screen and (width>1000px){
   .h{
     margin-left: 15rem;

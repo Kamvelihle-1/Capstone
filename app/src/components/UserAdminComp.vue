@@ -129,7 +129,7 @@
       },
       computed: {
           users() {
-              return this.$store.state.users
+              return this.$store.state.users 
           },
         preFilledItem() {
           return this.users.find(user => user.userID == this.userID) || {};
@@ -157,7 +157,7 @@
         updateUser(){
           this.payload.data = this.data
           this.payload.userID =this.userID
-          this.$store.dispatch("updateUser",this.data)
+          this.$store.dispatch("updateUser",this.payload)
         },
         deleteUser(X){
           this.$store.dispatch("deleteUser",X)

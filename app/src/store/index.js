@@ -203,7 +203,7 @@ export default createStore({
     },
     async updateUser(context,payload){
       try {
-        let {data} =await axios.patch(`${cUrl}user/${payload.userID}`,payload)
+        let {data} =await axios.patch(`${cUrl}user/${payload.userID}`,payload.data)
         if(data.msg){
           context.dispatch("getUsers")
           swal({
