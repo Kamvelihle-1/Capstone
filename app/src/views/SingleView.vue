@@ -81,7 +81,7 @@ export default {
   methods:{
     addToCart(){
       console.log(this.result !=" ");
-      if (this.result?.length > 0) {
+      if (this.result?.length > 0 || this.result !=" ") {
         this.payload.userID = this.result?.userID
         this.data.prodQuantity =this.qCount
         this.payload.data = this.data
